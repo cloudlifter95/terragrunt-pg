@@ -74,12 +74,13 @@ Steps:
 ## Problem statement 2: Run-all plan showing no change
 An alternative is to also run the `run-all apply`/`apply-all` command.
 
+- "apply-all" orchestrates and applies each dependency successfully and does not attempt fetching the outputs too early, which aligns with the documentation: [Documentation](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#:~:text=Note%20that%20the,all%20apply.)
 
-- "apply-all" orchestrates and applies each dependency successfully, which aligns with the documentation: [Documentation](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#:~:text=Note%20that%20the,all%20apply.)
+- however, "plan-all" while building successfully the DAG, only shows the outputs of the dependency to be "known after apply"(great!) **after an initial apply that has the outputs is run**.
+Also, the dependent modules are shown to have "no change" (which is wrong). Mocking would not help either under the "plan-all"/"apply-all"/"run-all plan"/"run-all apply" commands.
 
-- however, "plan-all" while building successfully the DAG, shows the outputs of the dependency to be "known after apply"(great!) but the dependent modules are shown to have "no change" (which is wrong). Mocking would not help either under the "plan-all"/"apply-all"/"run-all plan"/"run-all apply" commands.
+In a nutshell, I think the "plan-all"/"run-all plan" needs to be looked into to build successfully even on a new project as well as to show that there are expected changes on those dependent modules.
 
-In a nutshell, from where I stand i'd prefer the "plan-all"/"run-all plan" shows there are expected changes on those dependent modules instead of showing "no change". 
 
 **Trace:**
 ``` bash
