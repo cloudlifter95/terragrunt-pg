@@ -2,7 +2,7 @@
 
 Disclaimer: This is intended as a private experimentation of the terragrunt technology. This is not intended for production use.
 
-2 problem statements are described within this readme.
+**2 problem statements are described within this readme.**
 
 ## folder structure
 ```
